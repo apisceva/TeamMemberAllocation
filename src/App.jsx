@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import Employees from "./Employees";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
   const [selectedTeam, setTeam] = useState("TeamB");
@@ -92,6 +92,10 @@ function App() {
       teamName: "TeamD",
     },
   ]);
+
+  useEffect(() => {
+    localStorage.setItem("employeeList", JSON.stringify(employees));
+  }, [employees]);
 
   function handleTeamSelectionChange(event) {
     setTeam(event.target.value);
