@@ -97,6 +97,10 @@ function App() {
     localStorage.setItem("employeeList", JSON.stringify(employees));
   }, [employees]);
 
+  useEffect(() => {
+    localStorage.setItem("selectedTeam", JSON.stringify(selectedTeam));
+  }, [selectedTeam]);
+
   function handleTeamSelectionChange(event) {
     setTeam(event.target.value);
   }
