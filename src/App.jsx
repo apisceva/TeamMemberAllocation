@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GroupedTeamMembers from "./GroupedTeamMembers";
 import Nav from "./Nav";
+import NotFound from "./NotFound";
 
 function App() {
   const [selectedTeam, setTeam] = useState(
@@ -146,8 +147,15 @@ function App() {
         ></Route>
         <Route
           path="/GroupedTeamMembers"
-          element={<GroupedTeamMembers />}
+          element={
+            <GroupedTeamMembers
+              employees={employees}
+              selectedTeam={selectedTeam}
+              setTeam={setTeam}
+            />
+          }
         ></Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
       <Footer />
     </Router>
