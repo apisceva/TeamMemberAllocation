@@ -1,11 +1,10 @@
 import femaleProfile from "./images/femaleProfile.jpg";
 import maleProfile from "./images/maleProfile.jpg";
+import { useContext } from "react";
+import DataContext from "./context/DataContext";
 
-const TeamMemberCard = ({
-  employee,
-  selectedTeam,
-  handleEmployeeCardClick,
-}) => {
+const TeamMemberCard = ({ employee }) => {
+  const { handleEmployeeCardClick, selectedTeam } = useContext(DataContext);
   return (
     <div
       key={employee.id}
@@ -17,9 +16,9 @@ const TeamMemberCard = ({
       onClick={handleEmployeeCardClick}
     >
       {employee.gender === "male" ? (
-        <img src={maleProfile} className="card-img-top" />
+        <img src={maleProfile} className="card-img-top" alt="profile" />
       ) : (
-        <img src={femaleProfile} className="card-img-top" />
+        <img src={femaleProfile} className="card-img-top" alt="profile" />
       )}
       <div className="card-body">
         <h5 className="card-title">Full Name: {employee.fullName}</h5>
